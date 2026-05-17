@@ -9,6 +9,7 @@ function Home() {
   const [selectedSubject, setSelectedSubject] = useState('All')
   const [codes, setCodes] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     fetchCodes()
@@ -16,10 +17,16 @@ function Home() {
 
   const fetchCodes = async () => {
     try {
+      setLoading(true)
+
       const res = await API.get('/codes')
+
       setCodes(res.data)
     } catch (error) {
       console.log(error)
+      alert('Failed to load codes')
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -44,8 +51,19 @@ function Home() {
   )
 
   const handleDelete = async (id) => {
-    await API.delete(`/codes/${id}`)
-    fetchCodes()
+    const confirmDelete = window.confirm(
+      'Are you sure you want to delete this code?'
+    )
+
+    if (!confirmDelete) return
+
+    try {
+      await API.delete(`/codes/${id}`)
+      fetchCodes()
+    } catch (error) {
+      console.log(error)
+      alert('Delete failed')
+    }
   }
 
   return (
@@ -86,13 +104,21 @@ function Home() {
           </div>
 
           <div className="code-list">
-            {filteredCodes.map((code) => (
-              <CodeCard
-                key={code._id}
-                code={code}
-                onDelete={handleDelete}
-              />
-            ))}
+            {loading ? (
+              <p className="no-data">Loading codes...</p>
+            ) : filteredCodes.length > 0 ? (
+              filteredCodes.map((code) => (
+                <CodeCard
+                  key={code._id}
+                  code={code}
+                  onDelete={handleDelete}
+                />
+              ))
+            ) : (
+              <p className="no-data">
+                No codes found
+              </p>
+            )}
           </div>
         </div>
       </div>
