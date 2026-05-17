@@ -121,13 +121,50 @@ function Home() {
 
       <footer className="developer-footer">
         <h4>Developers</h4>
+
         <div className="developer-container">
           <div className="developer-person">
             <p>Chinmayi Udata</p>
+
+            <div className="developer-links">
+              <a
+                href="https://github.com/udatachinmayi-bit"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className="fab fa-github"></i>
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/chinmayi-udata-61aa7237a/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className="fab fa-linkedin"></i>
+              </a>
+            </div>
           </div>
 
           <div className="developer-person">
             <p>Ganesh Chavan</p>
+
+            <div className="developer-links">
+              <a
+                href="https://github.com/ganeshchavan-wd"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className="fab fa-github"></i>
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/ganesh-chavan-a46439340/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className="fab fa-linkedin"></i>
+              </a>
+            </div>
           </div>
         </div>
       </footer>
