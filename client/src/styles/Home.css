@@ -207,27 +207,22 @@
 
 /* FORCE UPDATED DEVELOPERS HEADING */
 .developer-footer h4 {
-  font-size: 52px !important;
-  font-weight: 900 !important;
-  margin-bottom: 45px !important;
-  letter-spacing: -2px !important;
+  font-size: 30px !important;
+  font-weight: 800 !important;
+  margin-bottom: 30px !important;
+  letter-spacing: -1px !important;
   text-transform: uppercase !important;
   font-family: 'Segoe UI', sans-serif !important;
 
   background: linear-gradient(
     135deg,
-    #ffffff 0%,
-    #dbeafe 25%,
-    #60a5fa 60%,
-    #7c3aed 100%
+    #ffffff,
+    #60a5fa,
+    #7c3aed
   ) !important;
 
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
-
-  text-shadow:
-    0 4px 20px rgba(255, 255, 255, 0.15),
-    0 12px 30px rgba(96, 165, 250, 0.25) !important;
 
   display: inline-block !important;
   position: relative !important;
