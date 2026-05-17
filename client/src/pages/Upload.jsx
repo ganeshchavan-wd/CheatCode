@@ -1,44 +1,38 @@
 import { useState } from 'react'
 import Navbar from '../components/Navbar'
 import '../styles/Upload.css'
+import API from '../api/api'
 
 function Upload() {
   const [question, setQuestion] = useState('')
   const [subject, setSubject] = useState('')
+  const [customSubject, setCustomSubject] = useState('')
   const [code, setCode] = useState('')
 
-  const handleUpload = () => {
-    if (!question || !subject || !code) {
+  const handleUpload = async () => {
+    const finalSubject = customSubject.trim() || subject
+
+    if (!question || !finalSubject || !code) {
       alert('Fill all fields')
       return
     }
 
-    const existingCodes =
-      JSON.parse(localStorage.getItem('codes')) || []
+    try {
+      await API.post('/codes', {
+        question,
+        subject: finalSubject,
+        code
+      })
 
-    const formattedSubject =
-      subject.trim().toLowerCase() === 'c++'
-        ? 'C++'
-        : subject.trim().charAt(0).toUpperCase() +
-          subject.trim().slice(1).toLowerCase()
+      alert('Code uploaded successfully')
 
-    const newCode = {
-      id: Date.now(),
-      question: question.trim(),
-      subject: formattedSubject,
-      code: code.trim()
+      setQuestion('')
+      setSubject('')
+      setCustomSubject('')
+      setCode('')
+    } catch (error) {
+      alert('Upload failed')
     }
-
-    localStorage.setItem(
-      'codes',
-      JSON.stringify([...existingCodes, newCode])
-    )
-
-    alert('Code uploaded successfully')
-
-    setQuestion('')
-    setSubject('')
-    setCode('')
   }
 
   return (
@@ -46,7 +40,7 @@ function Upload() {
       <Navbar />
 
       <div className="upload-container">
-        <h2>Upload Code</h2>
+        <h2>🚀 Upload Code</h2>
 
         <input
           type="text"
@@ -55,16 +49,27 @@ function Upload() {
           onChange={(e) => setQuestion(e.target.value)}
         />
 
-        <input
-          type="text"
-          placeholder="Enter Subject (Java / Python / C++ / DBMS)"
+        <select
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
+        >
+          <option value="">Select Subject</option>
+          <option value="Java">Java</option>
+          <option value="Python">Python</option>
+          <option value="C++">C++</option>
+          <option value="DBMS">DBMS</option>
+        </select>
+
+        <input
+          type="text"
+          placeholder="Or type custom subject"
+          value={customSubject}
+          onChange={(e) => setCustomSubject(e.target.value)}
         />
 
         <textarea
+          rows="14"
           placeholder="Paste your code here..."
-          rows="12"
           value={code}
           onChange={(e) => setCode(e.target.value)}
         ></textarea>

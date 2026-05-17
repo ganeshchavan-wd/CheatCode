@@ -1,19 +1,124 @@
 .navbar {
-  background: #1e293b;
-  color: white;
-  padding: 15px 30px;
+  width: 92%;
+  max-width: 1400px;
+  margin: 20px auto;
+  padding: 16px 38px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 24px;
+
+  /* realistic floating depth */
+  box-shadow:
+    0 4px 10px rgba(15, 23, 42, 0.04),
+    0 12px 24px rgba(15, 23, 42, 0.06),
+    0 24px 48px rgba(15, 23, 42, 0.08),
+    0 40px 80px rgba(37, 99, 235, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+
+  position: sticky;
+  top: 14px;
+  z-index: 1000;
+
+  animation: floatIn 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* floating entrance */
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* logo */
+.logo h1 {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1px;
+
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logo h1:hover {
+  transform: scale(1.04);
+}
+
+/* links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
 }
 
 .nav-links a {
-  color: white;
   text-decoration: none;
-  margin-left: 20px;
-  font-weight: bold;
+  color: #0f172a;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 14px;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .nav-links a:hover {
-  color: #38bdf8;
+  background: rgba(255, 255, 255, 0.5);
+  color: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.10);
+}
+
+/* glowing underline */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 55%;
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  .navbar {
+    width: 95%;
+    flex-direction: column;
+    gap: 15px;
+    padding: 18px;
+  }
+
+  .logo h1 {
+    font-size: 26px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }

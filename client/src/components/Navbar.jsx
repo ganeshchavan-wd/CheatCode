@@ -4,7 +4,9 @@ import '../styles/Navbar.css'
 function Navbar() {
   return (
     <nav className="navbar">
-      <h2>CheatCode</h2>
+      <div className="logo">
+        <h1>⚡ CheatCode</h1>
+      </div>
 
       <div className="nav-links">
         <Link to="/">Home</Link>

@@ -1,29 +1,57 @@
 .upload-container {
-  width: 70%;
-  margin: 40px auto;
-  background: white;
-  padding: 30px;
-  border-radius: 10px;
+  width: 60%;
+  margin: 50px auto;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
 }
 
 .upload-container h2 {
-  margin-bottom: 20px;
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 30px;
+  color: #0f172a;
 }
 
 .upload-container input,
-.upload-container textarea {
+.upload-container textarea,
+.upload-container select {
   width: 100%;
-  padding: 12px;
+  padding: 15px;
   margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  border: 2px solid #dbeafe;
+  border-radius: 12px;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.upload-container input:focus,
+.upload-container textarea:focus,
+.upload-container select:focus {
+  border-color: #2563eb;
+}
+
+.upload-container textarea {
+  background: #0f172a;
+  color: #e2e8f0;
+  font-family: monospace;
 }
 
 .upload-container button {
-  background: #2563eb;
+  width: 100%;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
   color: white;
   border: none;
-  padding: 12px 20px;
-  border-radius: 6px;
+  padding: 15px;
+  font-size: 18px;
+  border-radius: 12px;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.upload-container button:hover {
+  transform: scale(1.02);
 }
