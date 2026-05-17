@@ -18,9 +18,7 @@ function Home() {
   const fetchCodes = async () => {
     try {
       setLoading(true)
-
       const res = await API.get('/codes')
-
       setCodes(res.data)
     } catch (error) {
       console.log(error)
@@ -115,13 +113,24 @@ function Home() {
                 />
               ))
             ) : (
-              <p className="no-data">
-                No codes found
-              </p>
+              <p className="no-data">No codes found</p>
             )}
           </div>
         </div>
       </div>
+
+      <footer className="developer-footer">
+        <h4>Developers</h4>
+        <div className="developer-container">
+          <div className="developer-person">
+            <p>Chinmayi Udata</p>
+          </div>
+
+          <div className="developer-person">
+            <p>Ganesh Chavan</p>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
