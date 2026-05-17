@@ -1,0 +1,23 @@
+.view-container {
+  width: 80%;
+  margin: 30px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.view-container h2 {
+  margin-bottom: 15px;
+}
+
+.view-container p {
+  margin-bottom: 20px;
+}
+
+pre {
+  background: #1e293b;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  overflow-x: auto;
+}
